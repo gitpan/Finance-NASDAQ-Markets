@@ -5,8 +5,16 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     NAME              => 'Finance::NASDAQ::Markets',
     VERSION_FROM      => 'lib/Finance/NASDAQ/Markets.pm', # finds $VERSION
-    PREREQ_PM         => {}, # e.g., Module::Name => 1.1
+    PREREQ_PM         => {
+      # Require Test::More at least 0.47
+        "LWP::Simple" => 0,
+        "HTML::TableExtract" => 0,
+        "HTML::TableContentParser" =>0,
+    
+    }, # e.g., Module::Name => 1.1
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (ABSTRACT_FROM  => 'lib/Finance/NASDAQ/Markets.pm', # retrieve abstract from module
-       AUTHOR         => 'sante zero <hagen@>') : ()),
+       AUTHOR         => 'hagen geissler <santex@cpan.org>') : ()),
 );
+
+

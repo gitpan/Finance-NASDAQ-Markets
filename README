@@ -25,13 +25,27 @@ DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-  blah blah blah
+    use LWP::Simple qw($ua get);
+    use HTML::TableExtract;
+    use HTML::TableContentParser;
 
+THEN SIMPLE
+
+
+    package main;
+    use Finance::NASDAQ::Markets;
+    use Data::Dumper;
+    my @idx = Finance::NASDAQ::Markets::index();
+    my @sec = Finance::NASDAQ::Markets::sector();
+    print Dumper [@idx,@sec];
+    1;
+  
+  
 COPYRIGHT AND LICENCE
 
 Put the correct copyright and licence information here.
 
-Copyright (C) 2012 by sante zero
+Copyright (C) 2012 by Hagen Geissler
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.12.4 or,

@@ -12,10 +12,10 @@
 #   MakeMaker Parameters:
 
 #     ABSTRACT_FROM => q[lib/Finance/NASDAQ/Markets.pm]
-#     AUTHOR => q[sante zero <hagen@>]
+#     AUTHOR => q[hagen geissler <santex@cpan.org>]
 #     BUILD_REQUIRES => {  }
 #     NAME => q[Finance::NASDAQ::Markets]
-#     PREREQ_PM => {  }
+#     PREREQ_PM => { HTML::TableExtract=>q[0], LWP::Simple=>q[0], HTML::TableContentParser=>q[0] }
 #     VERSION_FROM => q[lib/Finance/NASDAQ/Markets.pm]
 
 # --- MakeMaker post_initialize section:
@@ -475,16 +475,19 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '--- #YAML:1.0' > META_new.yml
 	$(NOECHO) $(ECHO) 'name:               Finance-NASDAQ-Markets' >> META_new.yml
 	$(NOECHO) $(ECHO) 'version:            0.01' >> META_new.yml
-	$(NOECHO) $(ECHO) 'abstract:           Fetch real time markets' >> META_new.yml
+	$(NOECHO) $(ECHO) 'abstract:           Perl extension for blah blah blah' >> META_new.yml
 	$(NOECHO) $(ECHO) 'author:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    - sante zero <hagen@>' >> META_new.yml
+	$(NOECHO) $(ECHO) '    - hagen geissler <santex@cpan.org>' >> META_new.yml
 	$(NOECHO) $(ECHO) 'license:            unknown' >> META_new.yml
 	$(NOECHO) $(ECHO) 'distribution_type:  module' >> META_new.yml
 	$(NOECHO) $(ECHO) 'configure_requires:' >> META_new.yml
 	$(NOECHO) $(ECHO) '    ExtUtils::MakeMaker:  0' >> META_new.yml
 	$(NOECHO) $(ECHO) 'build_requires:' >> META_new.yml
 	$(NOECHO) $(ECHO) '    ExtUtils::MakeMaker:  0' >> META_new.yml
-	$(NOECHO) $(ECHO) 'requires:  {}' >> META_new.yml
+	$(NOECHO) $(ECHO) 'requires:' >> META_new.yml
+	$(NOECHO) $(ECHO) '    HTML::TableContentParser:  0' >> META_new.yml
+	$(NOECHO) $(ECHO) '    HTML::TableExtract:   0' >> META_new.yml
+	$(NOECHO) $(ECHO) '    LWP::Simple:          0' >> META_new.yml
 	$(NOECHO) $(ECHO) 'no_index:' >> META_new.yml
 	$(NOECHO) $(ECHO) '    directory:' >> META_new.yml
 	$(NOECHO) $(ECHO) '        - t' >> META_new.yml
@@ -761,9 +764,12 @@ testdb_static :: testdb_dynamic
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
 	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0.01">' > $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '    <ABSTRACT>Fetch real time markets</ABSTRACT>' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '    <AUTHOR>sante zero &lt;hagen@&gt;</AUTHOR>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '    <ABSTRACT>Perl extension for blah blah blah</ABSTRACT>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '    <AUTHOR>hagen geissler &lt;santex@cpan.org&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="HTML::TableContentParser" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="HTML::TableExtract" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="LWP::Simple" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-gnu-thread-multi-5.12" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd

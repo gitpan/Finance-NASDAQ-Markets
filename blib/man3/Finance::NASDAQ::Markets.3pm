@@ -124,20 +124,49 @@
 .\" ========================================================================
 .\"
 .IX Title "Finance::NASDAQ::Markets 3pm"
-.TH Finance::NASDAQ::Markets 3pm "2012-01-04" "perl v5.12.4" "User Contributed Perl Documentation"
+.TH Finance::NASDAQ::Markets 3pm "2012-01-05" "perl v5.12.4" "User Contributed Perl Documentation"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
 .nh
 .SH "NAME"
-Finance::NASDAQ::Markets \- Fetch real time markets
-.SH "VERSION"
-.IX Header "VERSION"
-Version 0.01
+Finance::NASDAQ::Markets \- Perl extension for blah blah blah
 .SH "SYNOPSIS"
 .IX Header "SYNOPSIS"
-#package main;
-#use Data::Dumper;
-#my \f(CW@idx\fR = \fIFinance::NASDAQ::Markets::index()\fR;
-#my \f(CW@sec\fR = \fIFinance::NASDAQ::Markets::sector()\fR;
-#print Dumper [@idx,@sec];
+.Vb 5
+\&  use Finance::NASDAQ::Markets;
+\&  use Data::Dumper;
+\&  my @idx = Finance::NASDAQ::Markets::index();
+\&  my @sec = Finance::NASDAQ::Markets::sector();
+\&  print Dumper [@idx,@sec];
+.Ve
+.SH "DESCRIPTION"
+.IX Header "DESCRIPTION"
+Stub documentation for Finance::NASDAQ::Markets, created by h2xs. It looks like the
+author of the extension was negligent enough to leave the stub
+unedited.
+.PP
+Loads Sectors and Index quotes and changes
+.SS "\s-1EXPORT\s0"
+.IX Subsection "EXPORT"
+None by default.
+.SH "SEE ALSO"
+.IX Header "SEE ALSO"
+Mention other useful documentation such as the documentation of
+related modules or operating system documentation (such as man pages
+in \s-1UNIX\s0), or any relevant external documentation such as RFCs or
+standards.
+.PP
+If you have a mailing list set up for your module, mention it here.
+.PP
+If you have a web site set up for your module, mention it here.
+.SH "AUTHOR"
+.IX Header "AUTHOR"
+Hagen Geissler
+.SH "COPYRIGHT AND LICENSE"
+.IX Header "COPYRIGHT AND LICENSE"
+Copyright (C) 2012 by sante zero
+.PP
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.12.4 or,
+at your option, any later version of Perl 5 you may have available.
