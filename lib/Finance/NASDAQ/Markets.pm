@@ -35,18 +35,6 @@ index sector
 our $VERSION = '0.01';
 
 
-
-sub _trim
-{
-    my $string = shift;
-    $string =  "" unless  $string;
-    $string =~ s/^\s+//;
-    $string =~ s/\s+$//;
-    $string =~ s/\t//;
-    $string =~ s/^\s//;
-    return $string;
-}
-
 #http://quotes.nasdaq.com/aspx/marketindices.aspx
 #http://quotes.nasdaq.com/aspx/sectorindices.aspx
 
@@ -74,6 +62,9 @@ sub getdata {
            for my $r (@{$t->{rows}}) {
           #   print "Row: ";
              for my $c (@{$r->{cells}}) {
+             
+                next unless($c->{data});
+                
                 if($c->{data}=~/redarrow/){
                    push @check,"-";
                 }
@@ -97,7 +88,7 @@ sub getdata {
 
 
 
-           map  {$_=~s/(InfoQuote|Charting)//g; $_=_trim($_)} @$row;
+           map  {if(defined($_)){ $_=~s/(InfoQuote|Charting)//g; $_=_trim($_)}} @$row;
            
             if(defined($check[$i])) {
             
@@ -127,6 +118,23 @@ sub getdata {
 }
 
 
+
+sub _trim
+{
+    my $string = shift;
+    $string =  "" unless  $string;
+    $string =~ s/^\s+//;
+    $string =~ s/\s+$//;
+    $string =~ s/\t//;
+    $string =~ s/^\s//;
+    return $string;
+}
+
+package main;
+  use Data::Dumper;
+  my @idx = Finance::NASDAQ::Markets::index();
+  my @sec = Finance::NASDAQ::Markets::sector();
+  print Dumper [@idx,@sec];
   
   
 1;
