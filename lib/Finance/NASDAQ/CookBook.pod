@@ -11,6 +11,37 @@ Finance::NASDAQ::Markets - Perl extension to download realtime quotes for all ma
   my @idx = Finance::NASDAQ::Markets::index();
   my @sec = Finance::NASDAQ::Markets::sector();
   print Dumper [@idx,@sec];
+  
+=head2 MORE
+
+    #!/usr/bin/perl
+    package main;
+
+    use Data::Dumper;
+    use Finance::Optical::StrongBuy;
+    use Finance::NASDAQ::Markets;
+    use Finance::Google::Sector::Mean;
+
+
+
+
+    my @sector = sectorsummary();
+
+    my @idx = index();
+
+    my @sec = sector();
+
+
+
+    my $new = Finance::Optical::StrongBuy->new("/tmp");
+    foreach my $symbol (qw/C BAC WFC WM F GE AAPL GOOG/){
+        $new->callCheck($symbol);
+    }
+
+    print Dumper [@idx,@sec,@sector ,$new];
+
+
+    1;
 
 =head1 DESCRIPTION
 
